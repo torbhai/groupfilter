@@ -3,10 +3,10 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import GetFullChannelRequest
 
-api_id = 'your_api_id'       # Substitute with your API ID
-api_hash = 'your_api_hash'   # Substitute with your API Hash
-username = 'your_username'   # Substitute with your username
-bot_token = 'your_bot_token' # Substitute with your Bot Token
+api_id = '26304154'       # Substitute with your API ID
+api_hash = '6298b78a280ec618df1440410e10ad68'   # Substitute with your API Hash
+username = 'swaps_up'   # Substitute with your username
+bot_token = '7123753669:AAHN-iuUJUFKTRF_BVzewRH3t_OE2682nrw' # Substitute with your Bot Token
 
 # Create an instance of the Telegram client
 client = TelegramClient(username, api_id, api_hash)
