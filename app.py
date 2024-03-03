@@ -1,5 +1,5 @@
 from telegram import Update, MessageEntity
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import GetFullChannelRequest
 
@@ -49,8 +49,7 @@ def handle_document(update: Update, context: CallbackContext) -> None:
 
 def main() -> None:
     """Start the bot."""
-    Updater(bot_token)
-
+    Updater(token=bot_token)
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
