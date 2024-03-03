@@ -1,15 +1,16 @@
-from telegram import Update, MessageEntity
+from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from telethon.sync import TelegramClient
 from telethon.tl.functions.channels import GetFullChannelRequest
 
-api_id = '26304154'       # Substitute with your API ID
-api_hash = '6298b78a280ec618df1440410e10ad68'   # Substitute with your API Hash
-username = 'swaps_up'   # Substitute with your username
-bot_token = '7123753669:AAHN-iuUJUFKTRF_BVzewRH3t_OE2682nrw' # Substitute with your Bot Token
+api_id = '26304154'  # Substitute with your API ID
+api_hash = '6298b78a280ec618df1440410e10ad68'  # Substitute with your API Hash
+username = 'swaps_up'  # Substitute with your username
+bot_token = '7123753669:AAHN-iuUJUFKTRF_BVzewRH3t_OE2682nrw'  # Substitute with your Bot Token
 
 # Create an instance of the Telegram client
 client = TelegramClient(username, api_id, api_hash)
+
 
 async def filter_groups(group_usernames):
     filtered_groups = []
@@ -24,9 +25,11 @@ async def filter_groups(group_usernames):
             print(f"Could not fetch details for group {group}: {str(e)}")
     return filtered_groups
 
+
 def start(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /start is issued."""
     update.message.reply_text('Hi! Send me a .txt file with Telegram group usernames, one per line.')
+
 
 def handle_document(update: Update, context: CallbackContext) -> None:
     """Handle incoming document."""
@@ -47,9 +50,10 @@ def handle_document(update: Update, context: CallbackContext) -> None:
     with open('filtered_usernames.txt', 'rb') as f:
         update.message.reply_document(f)
 
+
 def main() -> None:
     """Start the bot."""
-    Updater(token=bot_token)
+    updater = Updater(bot_token, use_context=True)  # Note the change here
     dispatcher = updater.dispatcher
 
     dispatcher.add_handler(CommandHandler("start", start))
@@ -58,6 +62,7 @@ def main() -> None:
     updater.start_polling()
 
     updater.idle()
+
 
 if __name__ == '__main__':
     main()
