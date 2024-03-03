@@ -49,7 +49,7 @@ def handle_document(update: Update, context: CallbackContext) -> None:
 
 def main() -> None:
     """Start the bot."""
-    updater = Updater(token=bot_token)
+    Updater(bot_token)
 
     dispatcher = updater.dispatcher
 
